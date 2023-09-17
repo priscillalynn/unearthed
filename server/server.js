@@ -3,8 +3,9 @@ import giftsRouter from "./routes/gifts.js";
 
 const app = express();
 
+app.use("/public", express.static("./public"));
 app.use("/scripts", express.static("./public/scripts"));
-
+app.use("/gifts", giftsRouter);
 
 app.get("/", (req, res) => {
   res
@@ -17,7 +18,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-  console.log(`Server is listening on http://localhost:${PORT}`);
+  console.log(`🚀 Server listening on http://localhost:${PORT}`);
 });
-
-app.use('/gifts', giftsRouter);
